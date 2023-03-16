@@ -5,13 +5,14 @@ def home(request):
   # Include an .html file extension - unlike when rendering EJS templates
   return render(request, 'home.html')
 
+def findhelp(request):
+  # Include an .html file extension - unlike when rendering EJS templates
+  return render(request, 'findhelp/index.html')
+
 def findwork(request):
   # Include an .html file extension - unlike when rendering EJS templates
   return render(request, 'findwork/index.html')
 
-def findjob(request):
-  # Include an .html file extension - unlike when rendering EJS templates
-  return render(request, 'findjob/index.html')
 
 def about(request):
   # Include an .html file extension - unlike when rendering EJS templates
