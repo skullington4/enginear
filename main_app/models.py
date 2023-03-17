@@ -5,9 +5,9 @@ from django.contrib.auth.models import User
 # Create your models here.
 
 STATUS = (
-    ('N', 'New'),
-    ('I', 'In Progress'),
-    ('C', 'Complete')
+    ('n', 'New'),
+    ('i', 'In Progress'),
+    ('c', 'Complete')
 )
 
 class Posts(models.Model):
@@ -28,7 +28,7 @@ class Posts(models.Model):
         return self.name
     
     def get_absolute_url(self):
-        return reverse('detail', kwargs={'finch_id': self.id})
+        return reverse('detail', kwargs={'post_id': self.id})
     
 
 class Profile(models.Model):
