@@ -13,7 +13,10 @@ def home(request):
   return render(request, 'home.html')
 
 def seekhelp(request):
-  return render(request, 'seekhelp/index.html')
+  posts = Post.objects.all()
+  return render(request, 'seekhelp/index.html',{
+    'posts':posts
+  })
 
 def seekhelpnew(request):
   return render(request, 'seekhelp/new.html')
@@ -44,6 +47,12 @@ def signup(request):
   context = {'form': form, 'error_message': error_message}
   return render(request, 'registration/signup.html', context)
 
+def post_detail(request, post_id):
+  post = Post.objects.get(id=post_id)
+  return render(request, 'seekhelp/detail.html', {
+    'post':post,
+  })
+
 class PostCreate(LoginRequiredMixin, CreateView):
   model = Post
   fields = ['title', 'description', 'rate']
@@ -51,3 +60,13 @@ class PostCreate(LoginRequiredMixin, CreateView):
   def form_valid(self, form):
     form.instance.user = self.request.user
     return super().form_valid(form)
+  
+class PostUpdate(LoginRequiredMixin, UpdateView):
+  model = Post
+  fields = '__all__'
+  success_url = '/seekhelp'
+
+
+class PostDelete(LoginRequiredMixin, DeleteView):
+  model = Post
+  success_url = '/seekhelp'
