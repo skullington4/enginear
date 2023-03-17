@@ -12,18 +12,23 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 </head>
 <body>
+  <!-- <div class="card-panel teal lighten-2"> -->
   <header class="navbar-fixed">
     <nav>
       <div class="nav-wrapper">
         <ul>
-          <li><a href="{% url 'home' %}" class="left brand-logo">&nbsp;&nbsp;EngiNear</a></li>
+          <li><a href="{% url 'home' %}" class="brand-logo center">&nbsp;&nbsp;EngiNear</a></li>
+        </ul>
+        <ul class="left">
+          <li><a href="{% url 'seekinghelp' %}">Seeking Help?</a></li>
+          <li><a href="{% url 'seekingwork' %}">Seeking Work?</a></li>
         </ul>
         <ul class="right">
-          <li><a href="{% url 'findhelp' %}">Looking for help!</a></li>
-          <li><a href="{% url 'findwork' %}">Looking for work!</a></li>
-          <li><a href="{% url 'about' %}">About me</a></li>
+          <li><a href="{% url 'about' %}">About</a></li>
+        
         </ul>
       </div>
+    </div>
     </nav>
   </header>
   <main class="container">
@@ -31,7 +36,9 @@
     {% endblock %}
   </main>
   <footer class="page-footer">
-    <div class="right">All Rights Reserved, &copy; 2023 EngiNear &nbsp;</div>
+    <div class="center">
+      All Rights Reserved, &copy; 2023 EngiNear &nbsp;
+    </div>
   </footer>
 </body>
 </html>
