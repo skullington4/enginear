@@ -19,8 +19,8 @@
           <li><a href="{% url 'home' %}" class="left brand-logo">&nbsp;&nbsp;EngiNear</a></li>
         </ul>
         <ul class="right">
-          <li><a href="{% url 'findhelp' %}">Looking for help!</a></li>
-          <li><a href="{% url 'findwork' %}">Looking for work!</a></li>
+          <li><a href="{% url 'seekhelp' %}">Seeking help!</a></li>
+          <li><a href="{% url 'seekwork' %}">Seeking work!</a></li>
           {% if user.is_authenticated %}
             <li><a href="{% url 'about' %}">About me</a></li>
             <li><a href="{% url 'logout' %}">Log Out</a></li>
