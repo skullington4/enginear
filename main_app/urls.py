@@ -6,5 +6,5 @@ urlpatterns = [
     path('findhelp/', views.findhelp, name='findhelp'),
     path('findwork/', views.findwork, name='findwork'),
     path('about/', views.about, name='about'),
-
+    path('accounts/signup/', views.signup, name='signup'),
 ]

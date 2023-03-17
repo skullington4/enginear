@@ -31,3 +31,6 @@ class Posts(models.Model):
         return reverse('detail', kwargs={'finch_id': self.id})
     
 
+class Profile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    business = models.CharField(max_length=100)
