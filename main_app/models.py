@@ -1,6 +1,6 @@
 from django.db import models
 from django.urls import reverse
-from datetime import date
+from datetime import date, datetime
 from django.contrib.auth.models import User
 # Create your models here.
 
@@ -9,6 +9,12 @@ STATUS = (
     ('i', 'In Progress'),
     ('c', 'Complete')
 )
+
+class Comment(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    description = models.CharField(max_length=500)
+    timestamp = models.DateTimeField(default=datetime.now)
+
 
 class Posts(models.Model):
     title = models.CharField(max_length=300)
@@ -20,6 +26,9 @@ class Posts(models.Model):
         default=STATUS[0][0]
     )
     user = models.ForeignKey(User, on_delete=models.CASCADE)
+    engineer = models.ForeignKey(User, on_delete=models.CASCADE, default=None, related_name='posts_engineer')
+    comments = models.ManyToManyField(Comment)
+    
 # Use https://git.generalassemb.ly/SEIR-01-23/student_resources/blob/main/unit_3/week_2/day_5/lessons/django_authentication.md
 # part 8 to associate user with post
 
@@ -33,4 +42,7 @@ class Posts(models.Model):
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    business = models.CharField(max_length=100)
+    is_business = models.BooleanField()
+
+    
+
