@@ -10,11 +10,11 @@ def home(request):
 #   posts = Posts.objects.filter(user=request.user)
   return render(request, 'home.html')
 
-def findhelp(request):
-  return render(request, 'findhelp/index.html')
+def seekhelp(request):
+  return render(request, 'seekhelp/index.html')
 
-def findwork(request):
-  return render(request, 'findwork/index.html')
+def seekwork(request):
+  return render(request, 'seekwork/index.html')
 
 @login_required
 def about(request):
