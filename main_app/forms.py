@@ -1,8 +1,8 @@
 from django.forms import ModelForm
-from .models import Posts
+from .models import Post
 
 class WorkForm(ModelForm):
     class Meta:
-        model = Posts
-        fields = ['title', 'description', 'rate',]
+        model = Post
+        fields = ['title', 'description', 'rate', 'status']
         # fields.status = 'n'
