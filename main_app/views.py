@@ -70,7 +70,7 @@ def post_detail(request, post_id):
 
 class PostCreate(LoginRequiredMixin, CreateView):
   model = Post
-  fields = ['title', 'description', 'rate', 'is_business', 'status' ]
+  fields = ['title', 'description', 'rate', 'is_business' ]
   # fields = '__all__'
   # success_url = '/seekhelp'
   def form_valid(self, form):
