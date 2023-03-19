@@ -8,6 +8,8 @@
             <div class="card-content">
             <span class="card-title"> {{ post.title }}</span>
                 <p>Description: {{ post.description }}</p>
+                <br>
+                <p class="red-text">Status: {{ post.get_status_display }}</p>
             </div>
             {% if user_id == post.user_id %}
             <div class="card-action indigo accent-3">

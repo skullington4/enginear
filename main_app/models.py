@@ -30,7 +30,7 @@ class Post(models.Model):
 # part 8 to associate user with post
 
     def __str__(self):
-        return f'{self.get_status_display()} on {self.title}'
+        return f'{self.get_status_display()}'
     
     def get_absolute_url(self):
         return reverse('detail', kwargs={'post_id':self.id})
