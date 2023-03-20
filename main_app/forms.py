@@ -5,4 +5,4 @@ class WorkForm(ModelForm):
     class Meta:
         model = Posts
         fields = ['title', 'description', 'rate',]
-        fields.status = 'n'
+        # fields.status = 'n'
