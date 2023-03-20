@@ -46,4 +46,8 @@ def signup(request):
 
 class PostCreate(LoginRequiredMixin, CreateView):
   model = Post
-  fields = '__all__'
+  fields = ['title', 'description', 'rate']
+  # success_url = '/seekhelp'
+  def form_valid(self, form):
+    form.instance.user = self.request.user
+    return super().form_valid(form)

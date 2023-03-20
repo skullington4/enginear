@@ -26,19 +26,15 @@ class Post(models.Model):
         default=STATUS[0][0]
     )
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    engineer = models.ForeignKey(User, on_delete=models.CASCADE, default=None, related_name='posts_engineer')
-    comments = models.ManyToManyField(Comment)
     
 # Use https://git.generalassemb.ly/SEIR-01-23/student_resources/blob/main/unit_3/week_2/day_5/lessons/django_authentication.md
 # part 8 to associate user with post
-
 
     def __str__(self):
         return self.name
     
     def get_absolute_url(self):
-        return reverse('detail', kwargs={'post_id': self.id})
-    
+        return reverse('seekhelp')
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
