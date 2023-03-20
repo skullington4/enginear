@@ -13,21 +13,28 @@
 </head>
 <body>
   <header class="navbar-fixed">
-    <nav>
+    <nav class="indigo accent-2">
       <div class="nav-wrapper">
         <ul>
-          <li><a href="{% url 'home' %}" class="left brand-logo">&nbsp;&nbsp;EngiNear</a></li>
+          <li><a href="{% url 'home' %}" class="center brand-logo">&nbsp;&nbsp;EngiNear⚙️⚙</a></li>
         </ul>
-        <ul class="right">
-          <li><a href="{% url 'seekhelp' %}">Seeking help!</a></li>
-          <li><a href="{% url 'seekwork' %}">Seeking work!</a></li>
+        <ul class="left">
+          <li><a href="{% url 'seekhelp' %}">Seeking Help?</a></li>
+          <li><a href="{% url 'seekwork' %}">Seeking Work?</a></li>
+        </ul>
           {% if user.is_authenticated %}
-            <li><a href="{% url 'about' %}">About me</a></li>
+          <ul class="right">
+
+            <li><a href="{% url 'about' %}">About</a></li>
             <li><a href="{% url 'logout' %}">Log Out</a></li>
+
+          </ul>
           {% else %}
+          <ul class="right">
             <li><a href="{% url 'signup' %}">Sign Up</a></li>
             <li><a href="{% url 'login' %}">Log In</a></li>
           {% endif %}
+          </ul>
         </ul>
       </div>
     </nav>
@@ -36,7 +43,7 @@
     {% block content %}
     {% endblock %}
   </main>
-  <footer class="page-footer">
+  <footer class="page-footer indigo accent-2">
     <div class="right">All Rights Reserved, &copy; 2023 EngiNear &nbsp;</div>
   </footer>
 </body>
