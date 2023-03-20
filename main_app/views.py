@@ -3,6 +3,8 @@ from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from .models import Post, Comment
 
 # Create your views here.
 def home(request):
@@ -12,6 +14,9 @@ def home(request):
 
 def seekhelp(request):
   return render(request, 'seekhelp/index.html')
+
+def seekhelpnew(request):
+  return render(request, 'seekhelp/new.html')
 
 def seekwork(request):
   return render(request, 'seekwork/index.html')
@@ -38,3 +43,7 @@ def signup(request):
   form = UserCreationForm()
   context = {'form': form, 'error_message': error_message}
   return render(request, 'registration/signup.html', context)
+
+class PostCreate(LoginRequiredMixin, CreateView):
+  model = Post
+  fields = '__all__'

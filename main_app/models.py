@@ -16,7 +16,7 @@ class Comment(models.Model):
     timestamp = models.DateTimeField(default=datetime.now)
 
 
-class Posts(models.Model):
+class Post(models.Model):
     title = models.CharField(max_length=300)
     description = models.TextField(max_length=250)
     rate = models.IntegerField()
