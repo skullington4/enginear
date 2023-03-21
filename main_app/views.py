@@ -5,6 +5,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .models import Post, Comment
+from .forms import CommentForm
 
 # Create your views here.
 def home(request):
@@ -22,7 +23,10 @@ def seekhelpnew(request):
   return render(request, 'seekhelp/new.html')
 
 def seekwork(request):
-  return render(request, 'seekwork/index.html')
+  posts = Post.objects.all()
+  return render(request, 'seekwork/index.html',{
+    'posts':posts
+  })
 
 @login_required
 def about(request):
@@ -49,8 +53,10 @@ def signup(request):
 
 def post_detail(request, post_id):
   post = Post.objects.get(id=post_id)
+  comment_form = CommentForm()
   return render(request, 'seekhelp/detail.html', {
     'post':post,
+    'comment_form': comment_form,
   })
 
 class PostCreate(LoginRequiredMixin, CreateView):
@@ -70,3 +76,14 @@ class PostUpdate(LoginRequiredMixin, UpdateView):
 class PostDelete(LoginRequiredMixin, DeleteView):
   model = Post
   success_url = '/seekhelp'
+
+
+def add_comment(request, post_id):
+  form = CommentForm(request.POST)
+  if form.is_valid():
+    new_comment = form.save(commit=False)
+    new_comment.post_id = post_id
+    new_comment.user = request.user
+    new_comment.save()
+  return redirect('detail', post_id=post_id)
+
