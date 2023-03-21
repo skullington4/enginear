@@ -61,7 +61,7 @@ WSGI_APPLICATION = 'enginear.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'Skullington4/enginear',
+        'NAME': 'Skullington4/enginearDB',
         'USER': os.environ['DB_USER'],
         'PASSWORD': os.environ['DB_PW'],
         'HOST': 'db.bit.io',

@@ -26,7 +26,9 @@ class Post(models.Model):
         default=STATUS[0][0]
     )
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    
+    comments = models.ManyToManyField(Comment)
+
+
 # Use https://git.generalassemb.ly/SEIR-01-23/student_resources/blob/main/unit_3/week_2/day_5/lessons/django_authentication.md
 # part 8 to associate user with post
 
