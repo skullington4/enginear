@@ -87,3 +87,12 @@ def add_comment(request, post_id):
     new_comment.save()
   return redirect('detail', post_id=post_id)
 
+
+class CommentUpdate(LoginRequiredMixin, UpdateView):
+  model = Comment
+  fields = '__all__'
+  success_url = '/seekhelp'
+
+class CommentDelete(LoginRequiredMixin, DeleteView):
+  model = Comment
+  success_url = '/seekhelp'
