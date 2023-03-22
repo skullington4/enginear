@@ -2,7 +2,7 @@
 <!-- extracted from cat collector -->
 {% block content %}
 {% if object %}
-<h1>Edit <span class="teal-text">{{object.name}}</span></h1>
+<h1>Edit Comment:<span class="teal-text">{{object.name}}</span></h1>
 {% else %}
 <h1>Edit Comment</h1>
 {% endif %}
@@ -14,7 +14,11 @@
   <!-- Render the inputs inside of <tr>s & <td>s -->
   {{ form.as_table }}
 </table>
-<input type="submit" value="Submit!" class="btn">
+<br><br>
+<div class="center">
+  <input type="submit" value="Submit!" class="btn indigo accent-3">
+  <a href="{% url 'detail' comment.id %}" class="red-text">Cancel</a>
+</div>
 </form>
 
 {% endblock %}
