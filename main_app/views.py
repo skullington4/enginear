@@ -11,9 +11,12 @@ from .forms import CommentForm
 def home(request):
   # Only want home to have  a filter for posts
   # Need to comment out line 14 and 16 if you are not logged in
-  # posts = Post.objects.filter(user=request.user)
+  if (request.user.is_authenticated):
+    posts = Post.objects.filter(user=request.user)
+  else:
+    posts = None
   return render(request, 'home.html', {
-      # 'posts':posts
+      'posts':posts
     })
 
 def seekhelp(request):
