@@ -21,7 +21,7 @@ def home(request):
     })
 
 def seekhelp(request):
-  posts = Post.objects.all()
+  posts = Post.objects.filter(is_business=True)
   return render(request, 'seekhelp/index.html',{
     'posts':posts
   })
@@ -30,7 +30,7 @@ def seekhelpnew(request):
   return render(request, 'seekhelp/new.html')
 
 def seekwork(request):
-  posts = Post.objects.all()
+  posts = Post.objects.filter(is_business=False)
   return render(request, 'seekwork/index.html',{
     'posts':posts
   })
@@ -79,7 +79,8 @@ class PostCreate(LoginRequiredMixin, CreateView):
   
 class PostUpdate(LoginRequiredMixin, UpdateView):
   model = Post
-  fields = '__all__'
+  # fields = '__all__'
+  fields = ['title', 'description', 'rate', 'is_business', 'status' ]
   success_url = '/seekhelp'
 
 

@@ -1,13 +1,15 @@
 {% extends 'base.html' %}
 {% block content %}
+{% include 'material/includes/material_css.html' %}
 
+{% include 'material/includes/material_js.html' %}
+
+{% load material_form %}
 <form action="" method="POST">
     {% csrf_token %}
-    <table>
-        {{ form.as_table }}
-    </table>
+    {% form form=form %}
+    {% endform %}
     <input type="submit" value="Submit!" class="waves-effect waves-light btn indigo accent-2">
-    
 </form>
 
 {% endblock %}
