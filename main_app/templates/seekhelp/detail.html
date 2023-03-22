@@ -10,28 +10,38 @@
             </div>
             {% if user_id == post.user_id %}
             <div class="card-action indigo accent-3">
-                <a href="{% url 'post_update' post.id %}">Edit</a>
-                <a href="{% url 'post_delete' post.id %}">Delete</a>
+                    <a href="{% url 'post_update' post.id %}">Edit</a>
+                    <a href="{% url 'post_delete' post.id %}">Delete</a>
+                </div>
             </div>
             {% endif %}
         </div>
-        <h3>Comments: </h3>
+        <h3 class="center">Comments:</h3>
+        
         <form action="{% url 'add_comment' post.id %}" method="POST">
             {% csrf_token %}
             {{ comment_form.as_p }}
-            <input type="submit" value="Add Comment!" class="waves-effect waves-light btn indigo accent-2">
+            <div class="center">
+                <input type="submit" value="Add Comment!" class="waves-effect waves-light btn indigo accent-2">
+            </div>
         </form>
-        <br><br>
+        <br>
         {% for comment in post.comment_set.all %}
+        <div class="column">
+        <div class="col s6">
         <div class="card center">
             <div class="card-content">
-                <div>{{comment.user}}</div>
+                <div class="left">{{comment.timestamp}}</div>
+                <div class="right">{{comment.user}}</div>
+                <br>
+                <br>
                 <div>{{comment.description}}</div>
-                <div>{{comment.timestamp}}</div>
                 {% if user_id == comment.user_id %}
+                </div>
                 <div class="card-action indigo accent-3">
-                    <a href="{% url 'comment_update' post.id comment.id %}">Edit</a>
-                    <a href="{% url 'comment_delete' post.id  comment.id %}">Delete</a>
+                    <a href="{% url 'comment_update' post.id comment.id %}">EDIT</a>
+                    <a href="{% url 'comment_delete' post.id  comment.id %}">DELETE</a>
+                </div>
                 </div>
                 {% endif %}
             </div>
