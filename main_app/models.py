@@ -21,6 +21,7 @@ class Post(models.Model):
         choices=STATUS,
         default=STATUS[0][0]
     )
+    is_business = models.BooleanField(default=False)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 
 
@@ -36,7 +37,7 @@ class Post(models.Model):
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    is_business = models.BooleanField()
+    # is_business = models.BooleanField(default=False)
 
     
 class Comment(models.Model):
