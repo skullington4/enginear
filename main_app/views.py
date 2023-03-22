@@ -5,7 +5,8 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .models import Post, Comment, User
-from .forms import CommentForm
+from .forms import CommentForm, WorkForm
+#added 'WorkForm' to .form imports^
 
 # Create your views here.
 def home(request):
@@ -69,7 +70,8 @@ def post_detail(request, post_id):
 
 class PostCreate(LoginRequiredMixin, CreateView):
   model = Post
-  fields = ['title', 'description', 'rate', 'is_business' ]
+  fields = ['title', 'description', 'rate', 'is_business', 'status' ]
+  # fields = '__all__'
   # success_url = '/seekhelp'
   def form_valid(self, form):
     form.instance.user = self.request.user
