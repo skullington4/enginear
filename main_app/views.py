@@ -4,14 +4,17 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
-from .models import Post, Comment
+from .models import Post, Comment, User
 from .forms import CommentForm
 
 # Create your views here.
 def home(request):
   # Only want home to have  a filter for posts
-#   posts = Posts.objects.filter(user=request.user)
-  return render(request, 'home.html')
+  # Need to comment out line 14 and 16 if you are not logged in
+  # posts = Post.objects.filter(user=request.user)
+  return render(request, 'home.html', {
+      # 'posts':posts
+    })
 
 def seekhelp(request):
   posts = Post.objects.all()
@@ -54,9 +57,11 @@ def signup(request):
 def post_detail(request, post_id):
   post = Post.objects.get(id=post_id)
   comment_form = CommentForm()
+  user_id = request.user.id
   return render(request, 'seekhelp/detail.html', {
     'post':post,
     'comment_form': comment_form,
+    'user_id':user_id
   })
 
 class PostCreate(LoginRequiredMixin, CreateView):
