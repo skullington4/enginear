@@ -8,11 +8,35 @@
             <span class="card-title"> {{ post.title }}</span>
                 <p>Description: {{ post.description }}</p>
             </div>
+            {% if user_id == post.user_id %}
             <div class="card-action indigo accent-3">
                 <a href="{% url 'post_update' post.id %}">Edit</a>
                 <a href="{% url 'post_delete' post.id %}">Delete</a>
             </div>
+            {% endif %}
         </div>
+        <h3>Comments: </h3>
+        <form action="{% url 'add_comment' post.id %}" method="POST">
+            {% csrf_token %}
+            {{ comment_form.as_p }}
+            <input type="submit" value="Add Comment!" class="waves-effect waves-light btn indigo accent-2">
+        </form>
+        <br><br>
+        {% for comment in post.comment_set.all %}
+        <div class="card center">
+            <div class="card-content">
+                <div>{{comment.user}}</div>
+                <div>{{comment.description}}</div>
+                <div>{{comment.timestamp}}</div>
+                {% if user_id == comment.user_id %}
+                <div class="card-action indigo accent-3">
+                    <a href="{% url 'comment_update' post.id comment.id %}">Edit</a>
+                    <a href="{% url 'comment_delete' post.id  comment.id %}">Delete</a>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+        {% endfor %}
     </div>
 </div>
 
