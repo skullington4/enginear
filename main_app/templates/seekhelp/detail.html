@@ -10,14 +10,15 @@
             </div>
             {% if user_id == post.user_id %}
             <div class="card-action indigo accent-3">
-                    <a href="{% url 'post_update' post.id %}">Edit</a>
-                    <a href="{% url 'post_delete' post.id %}">Delete</a>
-                </div>
+                <a href="{% url 'post_update' post.id %}">Edit</a>
+                <a href="{% url 'post_delete' post.id %}">Delete</a>
             </div>
-            {% endif %}
         </div>
-        <h3 class="center">Comments:</h3>
-        
+        {% endif %}
+    </div>
+    <h3 class="center">Comments:</h3>
+    
+     {% if user_id %}
         <form action="{% url 'add_comment' post.id %}" method="POST">
             {% csrf_token %}
             {{ comment_form.as_p }}
@@ -25,6 +26,7 @@
                 <input type="submit" value="Add Comment!" class="waves-effect waves-light btn indigo accent-2">
             </div>
         </form>
+     {% endif %}
         <br>
         {% for comment in post.comment_set.all %}
         <div class="column">
