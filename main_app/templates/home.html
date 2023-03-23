@@ -6,9 +6,11 @@
     <h1>Welcome to EngiNear</h1>
     <h4>Where Work Gets Done!</h4>
     <br>
+    {% if user.id %}
     <h5>Your Posts:</h5>
+    {% endif %}
 
-    <!-- your active posts -->
+
     {% for post in posts %}
     <a href="{% url 'detail' post.id %}">
         
