@@ -81,12 +81,12 @@ class PostUpdate(LoginRequiredMixin, UpdateView):
   model = Post
   # fields = '__all__'
   fields = ['title', 'description', 'rate', 'is_business', 'status' ]
-  success_url = '/seekhelp'
+  
 
 
 class PostDelete(LoginRequiredMixin, DeleteView):
   model = Post
-  success_url = '/seekhelp'
+  success_url = '/'
 
 
 def add_comment(request, post_id):
@@ -101,9 +101,12 @@ def add_comment(request, post_id):
 
 class CommentUpdate(LoginRequiredMixin, UpdateView):
   model = Comment
-  fields = '__all__'
-  success_url = '/seekhelp'
+  fields = ['description']
+  
 
 class CommentDelete(LoginRequiredMixin, DeleteView):
   model = Comment
-  success_url = '/seekhelp'
+  # success_url = '/seekwork'
+  def get_success_url(self):
+    post = Post.objects.get(pk=self.object.post.pk)
+    return post.get_absolute_url()
