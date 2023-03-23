@@ -40,6 +40,8 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+USE_THOUSAND_SEPARATOR = True
+
 ROOT_URLCONF = 'enginear.urls'
 TEMPLATES = [
     {

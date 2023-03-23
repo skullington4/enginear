@@ -20,7 +20,11 @@ class Post(models.Model):
         default=STATUS[0][0]
     )
     is_business = models.BooleanField(default=False)
+    timestamp = models.DateTimeField(default=datetime.now)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
+
+    class Meta:
+        ordering = ['-timestamp']
 
 # Use https://git.generalassemb.ly/SEIR-01-23/student_resources/blob/main/unit_3/week_2/day_5/lessons/django_authentication.md
 # part 8 to associate user with post
@@ -29,7 +33,7 @@ class Post(models.Model):
         return f'{self.get_status_display()} on {self.title}'
     
     def get_absolute_url(self):
-        return reverse('seekhelp')
+        return reverse('detail', kwargs={'post_id':self.id})
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
@@ -45,5 +49,8 @@ class Comment(models.Model):
     # Nice method for obtaining the friendly value of a Field.choice
         return f"{self.get_description_display()} on {self.timestamp}"
   
+    def get_absolute_url(self):
+        return reverse('detail', kwargs={'post_id':self.post_id})
+
     class Meta:
         ordering = ['-timestamp']
