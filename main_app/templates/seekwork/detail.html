@@ -1,13 +1,15 @@
 {% extends 'base.html' %}
 {% block content %}
 <br>
-<h4 class="center">{{post.user}}</h4>
+<h4 class="center">{{post.user}}'s post</h4>
 <div class="column">
     <div class="col s6">
         <div class="card center">
             <div class="card-content">
             <span class="card-title"> {{ post.title }}</span>
                 <p>Description: {{ post.description }}</p>
+                <p>${{post.rate}}</p>
+                <p>{{post.timestamp}}</p>
                 <br>
                 <p class="red-text">Status: {{ post.get_status_display }}</p>
             </div>
