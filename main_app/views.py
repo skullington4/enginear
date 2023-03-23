@@ -22,8 +22,9 @@ def home(request):
 
 def seekhelp(request):
   posts = Post.objects.filter(is_business=True)
+  final_posts = posts.filter(status='n')
   return render(request, 'seekhelp/index.html',{
-    'posts':posts
+    'posts':final_posts
   })
 
 def seekhelpnew(request):
@@ -31,8 +32,9 @@ def seekhelpnew(request):
 
 def seekwork(request):
   posts = Post.objects.filter(is_business=False)
+  final_posts = posts.filter(status='n')
   return render(request, 'seekwork/index.html',{
-    'posts':posts
+    'posts':final_posts
   })
 
 @login_required
