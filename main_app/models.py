@@ -37,7 +37,6 @@ class Post(models.Model):
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    # is_business = models.BooleanField(default=False)
 
 class Comment(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
