@@ -1,5 +1,8 @@
 {% extends 'base.html' %}
 {% block content %}
+<h2 class="center">Create a Post:</h2>
+<br><br>
+<div class="card">
 {% include 'material/includes/material_css.html' %}
 
 {% include 'material/includes/material_js.html' %}
@@ -9,10 +12,12 @@
     {% csrf_token %}
     {% form form=form %}
     {% endform %}
-
+<div class="card-action center">
     <input type="submit" value="Submit!" class="waves-effect waves-light btn indigo accent-2">
     <a href="{% url 'home' %}" class="red-text">Cancel</a>
+</div>
 </form>
+</div>
 <script>
     const selectEl = document.getElementById('id_status');
     M.FormSelect.init(selectEl)
