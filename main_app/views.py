@@ -81,7 +81,6 @@ class PostCreate(LoginRequiredMixin, CreateView):
   
 class PostUpdate(LoginRequiredMixin, UpdateView):
   model = Post
-  # fields = '__all__'
   fields = ['title', 'description', 'rate', 'is_business', 'status' ]
   
 
