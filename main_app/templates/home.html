@@ -16,6 +16,8 @@
             <div class="card-content">
                 <span class="card-title">{{ post.title }}</span>
                 <p>Rate: ${{post.rate}}</p>
+                <br>
+                <p class="red-text">Status: {{ post.get_status_display }}</p>
             </div>
         </div>  
     </a>

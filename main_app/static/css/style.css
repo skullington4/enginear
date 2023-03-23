@@ -17,3 +17,8 @@ body {
     font-family: copperplate;
     background-color: lavender;
   }
+
+  #post-table {
+    border: 25px solid white;
+    margin-top: 10px;
+  }
