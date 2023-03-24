@@ -9,18 +9,18 @@
 <br><br>
 <div class="card">
 
-{% load material_form %}
-<div class="">
-    <form id="post-table" action="" method="POST">
-        {% csrf_token %}
-        {% form form=form %}
-        {% endform %}
-        <div class="card-action center">
-            <input type="submit" value="Submit!" class="waves-effect waves-light btn indigo accent-2">
-            <a href="{% url 'home' %}" class="btn white red-text">Cancel</a>
-        </div>
-    </form>
-</div>
+    {% load material_form %}
+    <div class="">
+        <form id="post-table" action="" method="POST">
+            {% csrf_token %}
+            {% form form=form %}
+            {% endform %}
+            <div class="card-action center">
+                <input type="submit" value="Submit!" class="waves-effect waves-light btn indigo accent-2">
+                <a href="{% url 'home' %}" class="btn white red-text">Cancel</a>
+            </div>
+        </form>
+    </div>
 </div>
 <script>
     const selectEl = document.getElementById('id_status');

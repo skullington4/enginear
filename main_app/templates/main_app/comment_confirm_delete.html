@@ -1,10 +1,7 @@
 {% extends 'base.html' %}
-<!-- extracted from cat collector -->
 {% block content %}
 <div class="center">
-
   <h1 class="red-text">Delete Comment?</h1>
-
   <h4>Are you sure you want to delete <span class="red-text">Comment</span>?</h4>
   <br>
   <form action="" method="POST">
@@ -12,6 +9,5 @@
     <input type="submit" value="Yes - Delete!" class="btn red">
     <a href="{% url 'detail' comment.post_id %}" class="btn white red-text">Cancel</a>
   </form>
-
 </div>
 {% endblock %}
