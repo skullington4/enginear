@@ -17,4 +17,4 @@ Screenshots
 
 Technologies used: Python, Django, Bit.io, Heroku, JavaScript, HTML5, CSS, Materialize
 
-Ice box: Implementing a location based functionality, being able to connect an individual engineer/business to the post as a foreign key, Search function, Language converter API, AWS pictures.
+Ice box: Implementing a location based functionality, being able to connect an individual engineer/business to the post as a foreign key, Search function, Language converter API, AWS pictures, Rating system for an engineer.
