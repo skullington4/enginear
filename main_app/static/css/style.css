@@ -22,3 +22,12 @@ body {
     border: 25px solid white;
     margin-top: 10px;
   }
+
+  @media screen and (max-width: 900px) {
+    .navbar-fixed {
+      width: fit-content;
+
+    }
+    
+
+  }
