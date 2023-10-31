@@ -42,18 +42,7 @@
       </div>
     </nav>
 
-    <ul class="sidenav" id="mobile-nav">
-      <li><a href="{% url 'home' %}" class="center brand-logo">&nbsp;&nbsp;EngiNear</a></li>
-      <li><a href="{% url 'seekhelp' %}">Seeking Help</a></li>
-      <li><a href="{% url 'seekwork' %}">Seeking Work</a></li>
-      <li><a href="{% url 'about' %}">About</a></li>
-      {% if user.is_authenticated %}
-        <li><a href="{% url 'logout' %}">Log Out</a></li>
-      {% else %}
-        <li><a href="{% url 'signup' %}">Sign Up</a></li>
-        <li><a href="{% url 'login' %}">Log In</a></li>
-      {% endif %}
-    </ul>
+
 
 
   </header>
@@ -66,6 +55,19 @@
   </footer>
 </body>
 </html>
+
+<ul class="sidenav" id="mobile-nav">
+  <li><a href="{% url 'home' %}" class="center brand-logo">&nbsp;&nbsp;EngiNear</a></li>
+  <li><a href="{% url 'seekhelp' %}">Seeking Help</a></li>
+  <li><a href="{% url 'seekwork' %}">Seeking Work</a></li>
+  <li><a href="{% url 'about' %}">About</a></li>
+  {% if user.is_authenticated %}
+    <li><a href="{% url 'logout' %}">Log Out</a></li>
+  {% else %}
+    <li><a href="{% url 'signup' %}">Sign Up</a></li>
+    <li><a href="{% url 'login' %}">Log In</a></li>
+  {% endif %}
+</ul>
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
