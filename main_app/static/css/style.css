@@ -26,8 +26,14 @@ body {
   @media screen and (max-width: 900px) {
     .navbar-fixed {
       width: fit-content;
-
+      text-wrap: normal;
     }
-    
 
+    .nav-wrapper {
+      font-size: 3vmin !important;
+    }
+
+    li {
+      width: min-content !important;
+    }
   }

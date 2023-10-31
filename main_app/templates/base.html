@@ -18,26 +18,44 @@
         <ul>
           <li><a href="{% url 'home' %}" class="center brand-logo">&nbsp;&nbsp;EngiNear</a></li>
         </ul>
-        <ul class="left">
-          <li><a href="{% url 'seekhelp' %}">Seeking Help</a></li>
-          <li><a href="{% url 'seekwork' %}">Seeking Work</a></li>
-        </ul>
-        <ul class="right">
-          <li><a href="{% url 'about' %}">About</a></li>
-          {% if user.is_authenticated %}
-            
-            <li><a href="{% url 'logout' %}">Log Out</a></li>
+        <a href="#" data-target="mobile-nav" class="sidenav-trigger"><i class="material-icons">menu</i></a>
 
+        <ul class="hide-on-med-and-down">
+          <ul class="left">
+            <li><a href="{% url 'seekhelp' %}">Seeking Help</a></li>
+            <li><a href="{% url 'seekwork' %}">Seeking Work</a></li>
           </ul>
-          {% else %}
           <ul class="right">
-            <li><a href="{% url 'signup' %}">Sign Up</a></li>
-            <li><a href="{% url 'login' %}">Log In</a></li>
-          {% endif %}
+            <li><a href="{% url 'about' %}">About</a></li>
+            {% if user.is_authenticated %}
+              
+              <li><a href="{% url 'logout' %}">Log Out</a></li>
+
+            </ul>
+            {% else %}
+            <ul class="right">
+              <li><a href="{% url 'signup' %}">Sign Up</a></li>
+              <li><a href="{% url 'login' %}">Log In</a></li>
+            {% endif %}
+            </ul>
           </ul>
-        </ul>
       </div>
     </nav>
+
+    <ul class="sidenav" id="mobile-nav">
+      <li><a href="{% url 'home' %}" class="center brand-logo">&nbsp;&nbsp;EngiNear</a></li>
+      <li><a href="{% url 'seekhelp' %}">Seeking Help</a></li>
+      <li><a href="{% url 'seekwork' %}">Seeking Work</a></li>
+      <li><a href="{% url 'about' %}">About</a></li>
+      {% if user.is_authenticated %}
+        <li><a href="{% url 'logout' %}">Log Out</a></li>
+      {% else %}
+        <li><a href="{% url 'signup' %}">Sign Up</a></li>
+        <li><a href="{% url 'login' %}">Log In</a></li>
+      {% endif %}
+    </ul>
+
+
   </header>
   <main class="container">
     {% block content %}
@@ -48,3 +66,10 @@
   </footer>
 </body>
 </html>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  var elems = document.querySelectorAll('.sidenav');
+  var instances = M.Sidenav.init(elems);
+});
+</script>
